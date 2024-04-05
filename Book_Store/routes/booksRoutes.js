@@ -58,6 +58,28 @@ router.get('/getbooksCat', async(req,res) => {
     }
 })
 
+router.get('/getbooksStars', async(req,res) => {
+    try{
+        const stars = req.query.stars;
+
+        if(!stars){
+            return res.status(400).json({ message: 'Starts parameter is not found'});
+        }
+        const books = await  Book.find({stars: stars});
+
+        if(books.length === 0){
+            return res.status(400).json({message: "No book found with this number of starts."});
+        }
+
+        console.log(`Number of books with "${stars}" stars: ${books.length}`);
+
+        return res.status(200).json({message: "Book found Successful", data: books});
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({message: 'Internal server error'});
+    }
+})
+
 router.post('/addBooks', jwtAuthMiddleware,  async(req,res) => {
     try{
         if(!(await checkAdminRole(req.user.id)))
