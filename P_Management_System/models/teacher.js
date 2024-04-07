@@ -28,6 +28,9 @@ const teacherSchema = new Schema({
         type:String,
         required: true,
     },
+    studentEnrolled:{
+        type:mongoose.Types.ObjectId,
+    }
 })
 
 module.exports = mongoose.model('teacher', teacherSchema);
