@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
 const hodSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -7,7 +8,7 @@ const hodSchema = new mongoose.Schema({
         type: String,  
         required:true,
     },
-    id:{
+    hid:{
         type:String,
         required:true,
     },
@@ -18,6 +19,12 @@ const hodSchema = new mongoose.Schema({
     department:{
         type:String,
         required:true,
+    },
+    role:{
+        type:String,
+        required:true,
+        enum:['HOD','Teacher','Student'],
+        default:'HOD',
     }
 })
 

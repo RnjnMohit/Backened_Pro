@@ -18,7 +18,6 @@ const checkAdminRole = async (userID) => {
     }
 }
 
-
 router.get('/getAllBooks', async(req,res) => {
     try{
         const books = await Book.find({});

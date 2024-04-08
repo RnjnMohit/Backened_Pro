@@ -13,7 +13,7 @@ const studentSchema = new Schema({
         unique:true,
     },
     year:{
-        type:String,
+        type:Number,
         required:true,
     },
     phoneNumber:{
