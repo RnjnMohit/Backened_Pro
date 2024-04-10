@@ -7,16 +7,16 @@ const { jwtAuthMiddleware, generatedToken } = require('../jwt');
 const bcrypt = require("bcrypt");
 
 
-const checkAdminRole = async (userID) => {
-    try{
-        const user = await Hod.findById(userID);
-        if(user.role === "HOD"){
-            return true;
-        }
-    }catch(err){
-        return false;
-    }
-}
+// const checkAdminRole = async (userID) => {
+//     try{
+//         const user = await Hod.findById(userID);
+//         if(user.role === "HOD"){
+//             return true;
+//         }
+//     }catch(err){
+//         return false;
+//     }
+// }
 
 // Route for HOD sign-up
 router.post('/signup', async (req, res) => {
@@ -273,6 +273,5 @@ async function getTeacher(req, res, next) {
     res.teacher = teacher;
     next();
 }
-
 
 module.exports = router;
